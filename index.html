@@ -1,0 +1,79 @@
+<iDOCTYPE>
+<html>
+<head>
+<title>Fortune teller project</title>     
+<style>
+#eight-ball {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+	}
+
+body { 
+	background-color: grey;
+	
+	
+	}
+</style>
+
+
+
+<meta charset="UTF-8">
+</head>
+
+<body>
+
+
+<div id="eight-ball">
+        <button onclick="shake()">Shake</button>
+        <p id="question"></p>
+        <p id="answer"></p>
+    </div>
+</body>
+
+<script>
+   var fortuneTeller = {
+	promptText: "lETS DO IT!",
+	answerType: "text",
+	answers:  [ 
+			'yes',
+			'no',
+			'maybe',
+			'definetly not',
+			'ahhhh, i dont know',
+			'I doubt it',
+			'nope nope nope',
+			' what do look like a mind reader'
+			],
+				getAnswer: function(){
+            var min = 1;
+            var max = this.answers.length;
+            var index = Math.floor(Math.random() * (max - min + 1)) + min;
+            return this.answers[index-1];
+			}
+	};				
+		console.log(fortuneTeller.answers);
+//called when SHAKE button is clicked.
+function shake(){
+// set the prompt text
+var question = prompt(fortuneTeller.promptText);
+// display the question the user asked
+var questionText = document.getElementById('question');
+questionText.innerHTML = question;
+// This asks the fortuneTeller for a random answer
+var randomAnswer = fortuneTeller.getAnswer();
+// Access the DOM element we want to change
+var fortuneText = document.getElementById('answer');
+// update the element with our answer
+fortuneText.innerHTML = randomAnswer;
+}
+</script>
+
+
+
+
+
+
+
+
+</html>
